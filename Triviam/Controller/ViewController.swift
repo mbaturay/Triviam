@@ -12,8 +12,8 @@ import Alamofire
 
 class ViewController: UIViewController {
     
-    //let URL     = "https://goo.gl/ntSciT"
-    let URL     = "https://opentdb.com/api.php?amount=10&category=9&type=boolean"
+    let URL     = "https://goo.gl/ntSciT"
+    //let URL     = "https://opentdb.com/api.php?amount=10&category=9&type=boolean"
     var items   : [DataModel] = []
     var counter : Int = 0
     var score   : Int = 0
@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         roundButtons()
         getQuestions(url: URL)
+        questionLabel.text = "Fetching questions, please wait."
     }
 
     override func didReceiveMemoryWarning() {
