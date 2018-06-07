@@ -10,13 +10,20 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
+/*
+ Uses Open Trivia (https://opentdb.com) api for questions
+*/
+
 class ViewController: UIViewController {
     
-    let URL     = "https://goo.gl/ntSciT"
-    //let URL     = "https://opentdb.com/api.php?amount=10&category=9&type=boolean"
-    var items   : [DataModel] = []
-    var counter : Int = 0
-    var score   : Int = 0
+    let URL         = "https://goo.gl/ntSciT"
+    //let URL       = "https://opentdb.com/api.php?amount=10&category=9&type=boolean"
+    var items       : [DataModel] = []
+    var counter     : Int = 0
+    var score       : Int = 0
+    let localData   = Data()
+    var networkFlag : Bool = false
+    
     
     @IBOutlet weak var questionLabel: UILabel!
     
@@ -26,24 +33,36 @@ class ViewController: UIViewController {
     @IBOutlet weak var constScoreLabel: UILabel!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         roundButtons()
-        getQuestions(url: URL)
-        questionLabel.text = "Fetching questions, please wait."
+        
+        if Reachability.isConnectedToNetwork() {
+            networkFlag = true
+            getQuestions(url: URL)
+            questionLabel.text = "Fetching questions, please wait."
+        } else {
+            questionLabel.text = localData.questions[counter].question
+        }
     }
 
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
+        
     }
     
     func roundButtons() {
+        
         trueButton.layer.cornerRadius = 10
         trueButton.clipsToBounds = true
         falseButton.layer.cornerRadius = 10
         falseButton.clipsToBounds = true
+        
     }
 
     func getQuestions(url: String) {
+        
         Alamofire.request(url).responseJSON {
             response in
             if response.result.isSuccess {
@@ -54,15 +73,16 @@ class ViewController: UIViewController {
                 print("Fail getting the JSON response (49)!")
             }
         }
+        
     }
     
     func populateMyQuestionsArray (json : JSON) {
+        
         for index in 0...9 {
             items.append(DataModel(
                 question:       json["results"][index]["question"].stringValue,
                 correct_answer: json["results"][index]["correct_answer"].stringValue))
         }
-        print(items.isEmpty)
         setNextQuestion()
         
     }
@@ -76,47 +96,57 @@ class ViewController: UIViewController {
     }
     
     func checkAnswer(answer: String) {
-        let correct_answer = items[counter].correct_answer
+        
+        let correct_answer : String
+        
+        networkFlag ? (correct_answer = items[counter].correct_answer) : (correct_answer = localData.questions[counter].correct_answer)
+        
         if answer == correct_answer {
             score += 10
         }
         counter += 1
         setNextQuestion()
+        
     }
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        
         setNextQuestion()
+        
     }
     
     func setNextQuestion() {
         
         if counter <= 9 {
-            questionLabel.text = items[counter].question.htmlToString
+            networkFlag ?
+                (questionLabel.text = items[counter].question.htmlToString) : (questionLabel.text = localData.questions[counter].question)
         } else {
             let alert = UIAlertController(title: "Your score is \(score)", message: "Would you like to play again?", preferredStyle: .alert)
             let restart = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
                 self.startOver()
             }
-            
             alert.addAction(restart)
             present(alert, animated: true, completion: nil)
         }
+        
     }
     
     func startOver() {
+        
         counter = 0
-        score = 0
+        score   = 0
         setNextQuestion()
+        viewDidLoad()
+        
     }
 
 }
-/* End of Main
-   *************************/
+/* End of Main */
 
 
 
 
-/* E X T E N S I O N */
+/* E X T E N S I O N  to fix HTML formatted json */
 
 extension String {
     var htmlToAttributedString: NSAttributedString? {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		502C374C20C7A80500AD8ECE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C374B20C7A80500AD8ECE /* Data.swift */; };
+		502C374E20C9515A00AD8ECE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C374D20C9515A00AD8ECE /* Reachability.swift */; };
 		5062F5C620C662D600401F84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5062F5C520C662D600401F84 /* AppDelegate.swift */; };
 		5062F5C820C662D600401F84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5062F5C720C662D600401F84 /* ViewController.swift */; };
 		5062F5CB20C662D600401F84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5062F5C920C662D600401F84 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		502C374B20C7A80500AD8ECE /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		502C374D20C9515A00AD8ECE /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		5062F5C220C662D600401F84 /* Triviam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Triviam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5062F5C520C662D600401F84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5062F5C720C662D600401F84 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				5062F5C520C662D600401F84 /* AppDelegate.swift */,
 				5062F5C720C662D600401F84 /* ViewController.swift */,
+				502C374D20C9515A00AD8ECE /* Reachability.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				5062F5C820C662D600401F84 /* ViewController.swift in Sources */,
 				5062F5C620C662D600401F84 /* AppDelegate.swift in Sources */,
 				5076DDB820C66E2600322D05 /* DataModel.swift in Sources */,
+				502C374E20C9515A00AD8ECE /* Reachability.swift in Sources */,
 				502C374C20C7A80500AD8ECE /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

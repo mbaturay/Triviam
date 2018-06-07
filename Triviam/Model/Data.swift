@@ -15,42 +15,52 @@ class Data {
     init() {
         questions.append(
             DataModel(
-                question: "E.T. (Extraterrestrial) was the highest grossing film of the decade?",
+                question: "There is 4 members of The Beatles",
                 correct_answer: "True"))
         
         questions.append(
             DataModel(
-                question: "Die Hard was Alan Rickman’s first feature film role?",
-                correct_answer: "True"))
-        
-        questions.append(
-            DataModel(
-                question: "Hello, my name is Inigo Montoya. You killed my father. Prepare to die! --Sleeping Beauty",
+                question: "Ringo Starr's real name is Richard Stuart",
                 correct_answer: "False"))
         
         questions.append(
             DataModel(
-                question: "Die Hard was Alan Rickman’s first feature film role?",
+                question: "Paul's middle name is Paul",
                 correct_answer: "True"))
         
         questions.append(
             DataModel(
-                question: "Die Hard was Alan Rickman’s first feature film role?",
+                question: "John was married twice",
                 correct_answer: "True"))
         
         questions.append(
             DataModel(
-                question: "Die Hard was Alan Rickman’s first feature film role?",
+                question: "Paul is a vegetarian",
                 correct_answer: "True"))
         
         questions.append(
             DataModel(
-                question: "Die Hard was Alan Rickman’s first feature film role?",
+                question: "Paul had a sheepdog",
                 correct_answer: "True"))
         
         questions.append(
             DataModel(
-                question: "Die Hard was Alan Rickman’s first feature film role?",
+                question: "Brain Epstein was John's best man",
+                correct_answer: "True"))
+        
+        questions.append(
+            DataModel(
+                question: "George was never married",
+                correct_answer: "False"))
+        
+        questions.append(
+            DataModel(
+                question: "John has 5 children",
+                correct_answer: "False"))
+        
+        questions.append(
+            DataModel(
+                question: "Paul's first name is James",
                 correct_answer: "True"))
     }
 }
